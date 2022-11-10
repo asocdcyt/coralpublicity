@@ -233,7 +233,7 @@ body::-webkit-scrollbar-thumb {
   border: 4px solid transparent;
   cursor: pointer;
   transition: all 300ms ease;
-  z-index: 100;
+  z-index: 98;
 }
 
 #button-up:hover{
@@ -21083,7 +21083,7 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
   right: 10px;
   cursor: pointer;
   transition: all 300ms ease;
-  z-index: 100;
+  z-index: 98;
 }
 
 #support .button {
