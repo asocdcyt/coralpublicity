@@ -1,0 +1,499 @@
+<div class="min-height-300 bg-primary position-absolute w-100"></div>
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 ps" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="/">
+        <img src="/dash/img/logo-coralp.png" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Tablero</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Tienda</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Facturación</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/profile">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Perfil</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="https://www.smartsupp.com/widget/5d643208eddd208d3c89b3320be09e7c29de0815">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-collection text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Soporte</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-50 mx-auto" src="/dash/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor, consulte nuestro FAQ</p>
+          </div>
+        </div>
+      </div>
+      <a href="/faq" class="btn btn-dark btn-sm w-100 mb-3">FAQ</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    {{>navbar}}
+    <!-- End Navbar -->
+    
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            {{#each users}}
+            <form action="/profile/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="card-header pb-0">
+              <div class="d-flex align-items-center">
+                <p class="mb-0">Editar Perfil</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="text-uppercase text-sm">Información del Usuario</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Usuario</label>
+                    <input class="form-control" type="text" value="{{ username }}" disabled placeholder="Ej. Jose.Antonio2022">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Correo Electrónico</label>
+                    <input class="form-control" type="email" value="{{ email }}" disabled placeholder="Ej. joseantonio@example.com">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nombres</label>
+                    <input class="form-control" type="text" value="{{ firstname }}" name="firstname" placeholder="Ej. José Antonio">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Apellidos</label>
+                    <input class="form-control" type="text" value="{{ lastname }}" name="lastname" placeholder="Ej. López Pérez">
+                  </div>
+                </div>
+              </div>
+              <hr class="horizontal dark">
+              <p class="text-uppercase text-sm">Información de Contácto</p>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Dirección</label>
+                    <input class="form-control" type="text" value="{{ address }}" name="address" placeholder="Ej. Calle 1 y 2, entre carreras 14 y 15">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Ciudad</label>
+                    <input class="form-control" type="text" value="{{ city }}" name="city" placeholder="Ej. Barquisimeto">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">País</label>
+                    <select class="form-select form-control" type="txt" name="country" value="">
+                          <option value="Afganistán" style="color: black">Afganistán</option>
+                          <option value="Albania" style="color: black">Albania</option>
+                          <option value="Alemania" style="color: black">Alemania</option>
+                          <option value="Andorra" style="color: black">Andorra</option>
+                          <option value="Angola" style="color: black">Angola</option>
+                          <option value="Antigua y Barbuda" style="color: black">Antigua y Barbuda</option>
+                          <option value="Arabia Saudita" style="color: black">Arabia Saudita</option>
+                          <option value="Argelia" style="color: black">Argelia</option>
+                          <option value="Argentina" style="color: black">Argentina</option>
+                          <option value="Armenia" style="color: black">Armenia</option>
+                          <option value="Australia" style="color: black">Australia</option>
+                          <option value="Austria" style="color: black">Austria</option>
+                          <option value="Azerbaiyán" style="color: black">Azerbaiyán</option>
+                          <option value="Bahamas" style="color: black">Bahamas</option>
+                          <option value="Bangladesh" style="color: black">Bangladesh</option>
+                          <option value="Barbados" style="color: black">Barbados</option>
+                          <option value="Baréin" style="color: black">Baréin</option>
+                          <option value="Bélgica" style="color: black">Bélgica</option>
+                          <option value="Belice" style="color: black">Belice</option>
+                          <option value="Benín" style="color: black">Benín</option>
+                          <option value="Bielorrusia" style="color: black">Bielorrusia</option>
+                          <option value="Bolivia" style="color: black">Bolivia</option>
+                          <option value="Bosnia y Herzegovina" style="color: black">Bosnia y Herzegovina</option>
+                          <option value="Botsuana" style="color: black">Botsuana</option>
+                          <option value="Brasil" style="color: black">Brasil</option>
+                          <option value="Brunéi" style="color: black">Brunéi</option>
+                          <option value="Bulgaria" style="color: black">Bulgaria</option>
+                          <option value="Burkina Faso" style="color: black">Burkina Faso</option>
+                          <option value="Burundi" style="color: black">Burundi</option>
+                          <option value="Bután" style="color: black">Bután</option>
+                          <option value="Cabo Verde" style="color: black">Cabo Verde</option>
+                          <option value="Camboya" style="color: black">Camboya</option>
+                          <option value="Camerún" style="color: black">Camerún</option>
+                          <option value="Canadá" style="color: black">Canadá</option>
+                          <option value="Catar" style="color: black">Catar</option>
+                          <option value="Chad" style="color: black">Chad</option>
+                          <option value="Chile" style="color: black">Chile</option>
+                          <option value="China" style="color: black">China</option>
+                          <option value="Chipre" style="color: black">Chipre</option>
+                          <option value="Ciudad del Vaticano*" style="color: black">Ciudad del Vaticano*</option>
+                          <option value="Colombia" style="color: black">Colombia</option>
+                          <option value="Comoras" style="color: black">Comoras</option>
+                          <option value="Corea del Norte" style="color: black">Corea del Norte</option>
+                          <option value="Corea del Sur" style="color: black">Corea del Sur</option>
+                          <option value="Costa de Marfil" style="color: black">Costa de Marfil</option>
+                          <option value="Costa Rica" style="color: black">Costa Rica</option>
+                          <option value="Croacia" style="color: black">Croacia</option>
+                          <option value="Cuba" style="color: black">Cuba</option>
+                          <option value="Dinamarca" style="color: black">Dinamarca</option>
+                          <option value="Dominica" style="color: black">Dominica</option>
+                          <option value="Ecuador" style="color: black">Ecuador</option>
+                          <option value="Egipto" style="color: black">Egipto</option>
+                          <option value="El Salvador" style="color: black">El Salvador</option>
+                          <option value="Emiratos Árabes Unidos" style="color: black">Emiratos Árabes Unidos</option>
+                          <option value="Eritrea" style="color: black">Eritrea</option>
+                          <option value="Eslovaquia" style="color: black">Eslovaquia</option>
+                          <option value="Eslovenia" style="color: black">Eslovenia</option>
+                          <option value="España" style="color: black">España</option>
+                          <option value="Estados Unidos" style="color: black">Estados Unidos</option>
+                          <option value="Estonia" style="color: black">Estonia</option>
+                          <option value="Etiopía" style="color: black">Etiopía</option>
+                          <option value="Filipinas" style="color: black">Filipinas</option>
+                          <option value="Finlandia" style="color: black">Finlandia</option>
+                          <option value="Fiyi" style="color: black">Fiyi</option>
+                          <option value="Francia" style="color: black">Francia</option>
+                          <option value="Gabón" style="color: black">Gabón</option>
+                          <option value="Gambia" style="color: black">Gambia</option>
+                          <option value="Georgia" style="color: black">Georgia</option>
+                          <option value="Ghana" style="color: black">Ghana</option>
+                          <option value="Granada" style="color: black">Granada</option>
+                          <option value="Grecia" style="color: black">Grecia</option>
+                          <option value="Guatemala" style="color: black">Guatemala</option>
+                          <option value="Guyana" style="color: black">Guyana</option>
+                          <option value="Guinea" style="color: black">Guinea</option>
+                          <option value="Guinea Ecuatorial" style="color: black">Guinea Ecuatorial</option>
+                          <option value="Guinea-Bisáu" style="color: black">Guinea-Bisáu</option>
+                          <option value="Haití" style="color: black">Haití</option>
+                          <option value="Honduras" style="color: black">Honduras</option>
+                          <option value="Hungría" style="color: black">Hungría</option>
+                          <option value="India" style="color: black">India</option>
+                          <option value="Indonesia" style="color: black">Indonesia</option>
+                          <option value="Irak" style="color: black">Irak</option>
+                          <option value="Irán" style="color: black">Irán</option>
+                          <option value="Irlanda" style="color: black">Irlanda</option>
+                          <option value="Islandia" style="color: black">Islandia</option>
+                          <option value="Islas Marshall" style="color: black">Islas Marshall</option>
+                          <option value="Islas Salomón" style="color: black">Islas Salomón</option>
+                          <option value="Israel" style="color: black">Israel</option>
+                          <option value="Italia" style="color: black">Italia</option>
+                          <option value="Jamaica" style="color: black">Jamaica</option>
+                          <option value="Japón" style="color: black">Japón</option>
+                          <option value="Jordania" style="color: black">Jordania</option>
+                          <option value="Kazajistán" style="color: black">Kazajistán</option>
+                          <option value="Kenia" style="color: black">Kenia</option>
+                          <option value="Kirguistán" style="color: black">Kirguistán</option>
+                          <option value="Kiribati" style="color: black">Kiribati</option>
+                          <option value="Kuwait" style="color: black">Kuwait</option>
+                          <option value="Laos" style="color: black">Laos</option>
+                          <option value="Lesoto" style="color: black">Lesoto</option>
+                          <option value="Letonia" style="color: black">Letonia</option>
+                          <option value="Líbano" style="color: black">Líbano</option>
+                          <option value="Liberia" style="color: black">Liberia</option>
+                          <option value="Libia" style="color: black">Libia</option>
+                          <option value="Liechtenstein" style="color: black">Liechtenstein</option>
+                          <option value="Lituania" style="color: black">Lituania</option>
+                          <option value="Luxemburgo" style="color: black">Luxemburgo</option>
+                          <option value="Macedonia del Norte" style="color: black">Macedonia del Norte</option>
+                          <option value="Madagascar" style="color: black">Madagascar</option>
+                          <option value="Malasia" style="color: black">Malasia</option>
+                          <option value="Malaui" style="color: black">Malaui</option>
+                          <option value="Maldivas" style="color: black">Maldivas</option>
+                          <option value="Malí" style="color: black">Malí</option>
+                          <option value="Malta" style="color: black">Malta</option>
+                          <option value="Marruecos" style="color: black">Marruecos</option>
+                          <option value="Mauricio" style="color: black">Mauricio</option>
+                          <option value="Mauritania" style="color: black">Mauritania</option>
+                          <option value="México" style="color: black">México</option>
+                          <option value="Micronesia" style="color: black">Micronesia</option>
+                          <option value="Moldavia" style="color: black">Moldavia</option>
+                          <option value="Mónaco" style="color: black">Mónaco</option>
+                          <option value="Mongolia" style="color: black">Mongolia</option>
+                          <option value="Montenegro" style="color: black">Montenegro</option>
+                          <option value="Mozambique" style="color: black">Mozambique</option>
+                          <option value="Myanmar" style="color: black">Myanmar</option>
+                          <option value="Namibia" style="color: black">Namibia</option>
+                          <option value="Nauru" style="color: black">Nauru</option>
+                          <option value="Nepal" style="color: black">Nepal</option>
+                          <option value="Nicaragua" style="color: black">Nicaragua</option>
+                          <option value="Níger" style="color: black">Níger</option>
+                          <option value="Nigeria" style="color: black">Nigeria</option>
+                          <option value="Noruega" style="color: black">Noruega</option>
+                          <option value="Nueva Zelanda" style="color: black">Nueva Zelanda</option>
+                          <option value="Omán" style="color: black">Omán</option>
+                          <option value="Países Bajos" style="color: black">Países Bajos</option>
+                          <option value="Pakistán" style="color: black">Pakistán</option>
+                          <option value="Palaos" style="color: black">Palaos</option>
+                          <option value="Palestina*" style="color: black">Palestina*</option>
+                          <option value="Panamá" style="color: black">Panamá</option>
+                          <option value="Papúa Nueva Guinea" style="color: black">Papúa Nueva Guinea</option>
+                          <option value="Paraguay" style="color: black">Paraguay</option>
+                          <option value="Perú" style="color: black">Perú</option>
+                          <option value="Polonia" style="color: black">Polonia</option>
+                          <option value="Portugal" style="color: black">Portugal</option>
+                          <option value="Reino Unido" style="color: black">Reino Unido</option>
+                          <option value="República Centroafricana" style="color: black">República Centroafricana</option>
+                          <option value="República Checa" style="color: black">República Checa</option>
+                          <option value="República del Congo" style="color: black">República del Congo</option>
+                          <option value="República Democrática del Congo" style="color: black">República Democrática del Congo</option>
+                          <option value="República Dominicana" style="color: black">República Dominicana</option>
+                          <option value="Ruanda" style="color: black">Ruanda</option>
+                          <option value="Rumanía" style="color: black">Rumanía</option>
+                          <option value="Rusia" style="color: black">Rusia</option>
+                          <option value="Samoa" style="color: black">Samoa</option>
+                          <option value="San Cristóbal y Nieves" style="color: black">San Cristóbal y Nieves</option>
+                          <option value="San Marino" style="color: black">San Marino</option>
+                          <option value="San Vicente y las Granadinas" style="color: black">San Vicente y las Granadinas</option>
+                          <option value="Santa Lucía" style="color: black">Santa Lucía</option>
+                          <option value="Santo Tomé y Príncipe" style="color: black">Santo Tomé y Príncipe</option>
+                          <option value="Senegal" style="color: black">Senegal</option>
+                          <option value="Serbia" style="color: black">Serbia</option>
+                          <option value="Seychelles" style="color: black">Seychelles</option>
+                          <option value="Sierra Leona" style="color: black">Sierra Leona</option>
+                          <option value="Singapur" style="color: black">Singapur</option>
+                          <option value="Siria" style="color: black">Siria</option>
+                          <option value="Somalia" style="color: black">Somalia</option>
+                          <option value="Sri Lanka" style="color: black">Sri Lanka</option>
+                          <option value="Suazilandia" style="color: black">Suazilandia</option>
+                          <option value="Sudáfrica" style="color: black">Sudáfrica</option>
+                          <option value="Sudán" style="color: black">Sudán</option>
+                          <option value="Sudán del Sur" style="color: black">Sudán del Sur</option>
+                          <option value="Suecia" style="color: black">Suecia</option>
+                          <option value="Suiza" style="color: black">Suiza</option>
+                          <option value="Surinam" style="color: black">Surinam</option>
+                          <option value="Tailandia" style="color: black">Tailandia</option>
+                          <option value="Tanzania" style="color: black">Tanzania</option>
+                          <option value="Tayikistán" style="color: black">Tayikistán</option>
+                          <option value="Timor Oriental" style="color: black">Timor Oriental</option>
+                          <option value="Togo" style="color: black">Togo</option>
+                          <option value="Tonga" style="color: black">Tonga</option>
+                          <option value="Trinidad y Tobago" style="color: black">Trinidad y Tobago</option>
+                          <option value="Túnez" style="color: black">Túnez</option>
+                          <option value="Turkmenistán" style="color: black">Turkmenistán</option>
+                          <option value="Turquía" style="color: black">Turquía</option>
+                          <option value="Tuvalu" style="color: black">Tuvalu</option>
+                          <option value="Surinam" style="color: black">Surinam</option>
+                          <option value="Tailandia" style="color: black">Tailandia</option>
+                          <option value="Tanzania" style="color: black">Tanzania</option>
+                          <option value="Tayikistán" style="color: black">Tayikistán</option>
+                          <option value="Timor Oriental" style="color: black">Timor Oriental</option>
+                          <option value="Togo" style="color: black">Togo</option>
+                          <option value="Tonga" style="color: black">Tonga</option>
+                          <option value="Trinidad y Tobago" style="color: black">Trinidad y Tobago</option>
+                          <option value="Túnez" style="color: black">Túnez</option>
+                          <option value="Turkmenistán" style="color: black">Turkmenistán</option>
+                          <option value="Turquía" style="color: black">Turquía</option>
+                          <option value="Tuvalu" style="color: black">Tuvalu</option>
+                          <option value="Ucrania" style="color: black">Ucrania</option>
+                          <option value="Uganda" style="color: black">Uganda</option>
+                          <option value="Uruguay" style="color: black">Uruguay</option>
+                          <option value="Uzbekistán" style="color: black">Uzbekistán</option>
+                          <option value="Vanuatu" style="color: black">Vanuatu</option>
+                          <option selected value="República Bolivariana de Venezuela" style="color: black">República Bolivariana de Venezuela</option>
+                          <option value="Vietnam" style="color: black">Vietnam</option>
+                          <option value="Yemen" style="color: black">Yemen</option>
+                          <option value="Yibuti" style="color: black">Yibuti</option>
+                          <option value="Zambia" style="color: black">Zambia</option>
+                          <option value="Zimbabue" style="color: black">Zimbabue</option>
+                        </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Código Postal</label>
+                    <input class="form-control" type="text" value="{{ postalcode }}" name="postalcode" placeholder="3001">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Número de Teléfono</label>
+                    <input class="form-control" type="text" value="{{ phone }}" name="phone" placeholder="+584123456789">
+                  </div>
+                </div>
+              </div>
+              <hr class="horizontal dark">
+              <p class="text-uppercase text-sm">INFORMACIÓN DE EMPRESA</p>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Empresa</label>
+                    <input class="form-control" type="text" value="{{ business }}" name="business" placeholder="Ej. Coral Publicity, C. A.">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Sobre la empresa</label>
+                    <input class="form-control" type="text" value="{{ morebusiness }}" name="morebusiness" placeholder="Ej. Publicidad, Desarrollo Web, Diseños Gráficos, Manejo de Redes...">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Puesto</label>
+                    <input class="form-control" type="text" value="{{ position }}" name="position" placeholder="Ej. Coral Publicity, C. A.">
+                  </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                </div>
+              </div>
+            </div>
+            </form>
+            {{/each}}
+          </div>
+        </div>
+        {{#each users}}
+        <div class="col-md-4">
+          <div class="card card-profile">
+            <img src="/dash/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
+            <div class="row justify-content-center">
+              <div class="col-4 col-lg-4 order-lg-2">
+                <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
+                    <div class="avatar avatar-xxl position-relative">
+                      <img data-cfsrc="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/team-2.jpg" class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/team-2.jpg">
+                      <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalSignUp" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                      <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i><span class="sr-only">Edit Image</span>
+                      </a>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+              <div class="d-flex justify-content-between">
+                <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-none d-lg-block">Connect</a>
+                <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i class="ni ni-collection"></i></a>
+                <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Message</a>
+                <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-block d-lg-none"><i class="ni ni-email-83"></i></a>
+              </div>
+            </div>
+            <div class="card-body pt-0">
+              <div class="text-center mt-4">
+                <h5>
+                  {{ firstname }} {{ lastname }}
+                </h5>
+                <div class="h6 font-weight-300">
+                  <i class="ni location_pin mr-2"></i>{{ city }}, {{ country }}
+                </div>
+                <div class="h6 mt-4">
+                  <i class="ni business_briefcase-24 mr-2"></i>{{ bussiness }}
+                </div>
+                <div>
+                  <i class="ni education_hat mr-2"></i> {{ position }} en {{ business }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      <!-- Modal -->
+    <div class="modal fade" id="exampleModalSignUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content" style="background-color:#051626;">
+          <div class="modal-body p-0">
+            <div class="card card-plain">
+              <div class="card-header pb-0 text-left">
+                  <h3 class="font-weight-bolder text-success text-gradient">Cambiar Avatar</h3>
+                  <p class="mb-0">Seleccione de su preferencia</p>
+              </div>
+              <div class="card-body pb-3 text-center">
+                <form role="form text-center">
+
+                  <div class="px-1" style="display: inline-block;">
+                    <input type="radio" name="flexRadioDefault" style="display: none;">
+                    <div class="avatar avatar-xxl">
+                      <img class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/team-2.jpg" id="image-avatar" style="cursor: pointer; display:inline-block; position:relative;">
+                    </div>
+                  </div>
+
+                  <div class="px-1" style="display: inline-block;">
+                    <input  type="radio" name="flexRadioDefault" style="display: none;">
+                    <div class="avatar avatar-xxl">
+                      <img class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/team-3.jpg" id="image-avatar" style="cursor: pointer; display:inline-block; position:relative;">
+                    </div>
+                  </div>
+
+                  <div class="px-1" style="display: inline-block;">
+                    <input  type="radio" name="flexRadioDefault" style="display: none;">
+                    <div class="avatar avatar-xxl">
+                      <img class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/team-1.jpg" id="image-avatar" style="cursor: pointer; display:inline-block; position:relative;">
+                    </div>
+                  </div>
+
+                  <div class="px-1" style="display: inline-block;">
+                    <input  type="radio" name="flexRadioDefault" style="display: none;">
+                    <div class="avatar avatar-xxl">
+                      <img class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/team-4.jpg" id="image-avatar" style="cursor: pointer; display:inline-block; position:relative;">
+                    </div>
+                  </div>
+
+                  <div class="px-1" style="display: inline-block;">
+                    <input  type="radio" name="flexRadioDefault" style="display: none;">
+                    <div class="avatar avatar-xxl">
+                      <img class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/marie.jpg" id="image-avatar" style="cursor: pointer; display:inline-block; position:relative;">
+                    </div>
+                  </div>
+                  
+                  <div class="px-1" style="display: inline-block;">
+                    <input  type="radio" name="flexRadioDefault" style="display: none;">
+                    <div class="avatar avatar-xxl">
+                      <img class="border-radius-md" src="https://demos.creative-tim.com/test/soft-ui-dashboard-pro/assets/img/kal-visuals-square.jpg" id="image-avatar" style="cursor: pointer; display:inline-block; position:relative;">
+                    </div>
+                  </div>
+                  <div class="text-center">
+                  <button type="button" class="btn bg-gradient-success text-dark btn-lg btn-rounded w-100 mt-4 mb-0">
+                  Guardar Avatar
+                  </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      {{>footer-a}}
+    </div>
+  </main>
